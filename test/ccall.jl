@@ -457,9 +457,9 @@ macro test_huge(i, b, init)
     f = QuoteNode(Symbol("test_huge", i, b))
     ty = Symbol("Struct_huge", i, b)
     return quote
-        let a = $(esc(init)), b
-            b = ccall(($f, libccalltest), $ty, (Cchar, $ty, Cchar), '0' + $i, a, $b)
-            verify_huge($(esc(init)), a, b)
+        let a = $(esc(init)), f
+            f(b) = ccall(($f, libccalltest), $ty, (Cchar, $ty, Cchar), '0' + $i, a, $b)
+            verify_huge($(esc(init)), a, f(a))
         end
     end
 end
