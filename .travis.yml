@@ -108,5 +108,5 @@ script:
         /tmp/julia/bin/julia --check-bounds=yes runtests.jl $TESTSTORUN &&
         /tmp/julia/bin/julia --check-bounds=yes runtests.jl libgit2-online pkg
     - cd `dirname $TRAVIS_BUILD_DIR` && mv julia2 julia && rm -rf julia/deps/build/julia-env
-# uncomment the following if failures are suspected to be due to the out-of-memory killer
-#    - dmesg
+    - dmesg
+    # uncomment the following if failures are suspected to be due to the out-of-memory killer
